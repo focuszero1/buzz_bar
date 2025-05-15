@@ -78,3 +78,28 @@ See `buzz_bar_goals_ideas.md` for more details.
    - Save ChatGPT collaboration notes if helpful
    - Reload into GPT project folder for next session
 
+## ✅ Milestone: BuzzBarBridge v1 Stable Prototype (May 15, 2025)
+
+### Overview
+This marks the successful creation and test of the first full data bridge between Ableton Live and Python for the Buzz Bar project. Real-time audio amplitude data is now sent directly from Ableton into a Python listener, forming the foundation for future visualizer development.
+
+### Completed
+- Built `BuzzBarBridge.amxd` Max for Live device:
+  - `[plugin~] → [snapshot~ 50] → [pack f] → [prepend /buzzbar/amplitude] → [udpsend 127.0.0.1 7400]`
+  - Patched `[plugin~ L]` output into `[snapshot~]` to enable correct audio signal capture
+- Built `test_bridge_capture.py` Python OSC listener to receive `/buzzbar/amplitude` data
+- Verified full pipeline:
+  - Audio input in Ableton → BuzzBarBridge → OSC → Python
+  - Continuous, stable float stream representing waveform amplitude
+- Confirmed this prototype works in current Ableton + Max for Live environment
+
+### Notes
+- Raw amplitude values are in range `-1.0 to +1.0`, matching audio waveform samples
+- Absolute value filtering to remove negatives pending next phase
+- Data bridge officially stable and expandable
+
+### Next Steps
+- Begin Phase 2 development:
+  - Silence threshold filter
+  - Optional smoothing or peak hold
+  - Integration with visualizer bars in `buzz_bar`
