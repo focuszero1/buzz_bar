@@ -1,8 +1,6 @@
 from visualizer import run_visualizer
-from audio_input import get_spectrum
-
-def get_current_spectrum():
-    return get_spectrum()
+from osc_input import start_osc_server, get_osc_spectrum
 
 if __name__ == "__main__":
-    run_visualizer(get_current_spectrum)
+    start_osc_server()
+    run_visualizer(get_osc_spectrum)

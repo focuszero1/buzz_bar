@@ -24,7 +24,7 @@ def run_visualizer(get_spectrum_callback):
         bars_data = get_spectrum_callback()
 
         # Scaling: find max value to normalize (prevent huge jumps)
-        max_value = max(bars_data) if bars_data else 1
+        max_value = max(max(bars_data), 0.05)  # Don't let it normalize to < 0.05
         screen.fill((0, 0, 0))
 
         total_spacing = bar_spacing * (num_bars - 1)

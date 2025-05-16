@@ -8,7 +8,7 @@ from pythonosc import osc_server
 def audio_callback(address, *args):
     print(f"Received from {address}: {args}")
 
-def main(ip="127.0.0.1", port=8000):
+def main(ip="127.0.0.1", port=7400):
     print(f"Listening for OSC messages on {ip}:{port}...")
     
     disp = dispatcher.Dispatcher()
@@ -25,7 +25,7 @@ def main(ip="127.0.0.1", port=8000):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test script for BuzzBarBridge OSC output.")
     parser.add_argument("--ip", type=str, default="127.0.0.1", help="The IP to listen on.")
-    parser.add_argument("--port", type=int, default=8000, help="The port to listen on.")
+    parser.add_argument("--port", type=int, default=7400, help="The port to listen on.")
     args = parser.parse_args()
 
     main(ip=args.ip, port=args.port)
